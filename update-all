@@ -1,0 +1,39 @@
+#!/bin/bash
+figlet Update All
+# Start Of The Script:
+echo -en '\n'
+echo -e "Small Script for Updating and Upgrading Packages on Linux \e[7m(ubuntu20.04 OS)\e[27m"
+echo 'Version 1.0'
+echo -en '\n'
+echo -en '\n'
+
+function error {
+  echo -e "\\e[91m$1\\e[39m"
+  exit 1
+}
+#Checking Update:
+echo -e "\e[31mChecking for updates...\e[0m"
+echo -e "\e[32mUpdates are found! \e[0m"
+# Prompt:
+echo "Please enter your password to start updating"
+echo -en '\n'
+# Main:
+sudo apt autoremove -y && sudo apt --fix-broken install && sudo apt update --fix-missing || error '\e[31mUnable to update, please check your internet connection...\e[0m' && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y
+echo -en && sudo apt install -f && sudo rm -rf /var/lib/dpkg/info/*.postinst && sudo dpkg --configure -a
+#Comment 'clear' below to stop clearing the output:
+clear -x
+# Ending:
+echo "All is updated, press X to exit"
+count=0
+while : ; do
+read -n 1 k <&1
+if [[ $k = x ]] ; then
+printf "\nQuitting from the script...\n"
+break
+else
+((count=$count+1))
+printf "\nWrong key pressed for $count times\n"
+echo "Press X to exit"
+fi
+done
+
