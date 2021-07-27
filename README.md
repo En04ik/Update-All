@@ -1,4 +1,5 @@
 This is Small Script for Updating and Upgrading Packages on Linux
+
 How to install this?
 1. cd $HOME 
 2. git clone https://github.com/En04ik/Update-All
