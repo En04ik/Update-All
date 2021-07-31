@@ -14,6 +14,22 @@ function error {
 #Checking Update:
 echo -e "\e[31mChecking for updates...\e[0m"
 echo -e "\e[32mUpdates are found! \e[0m"
+
+start() {
+  echo -e "\n${yellow} If you want to continue, press Y \n\n${reset}"
+}
+
+prompt_confirm() {
+  while true; do
+    read -r -n 1 -p "${1:-} [y/n]: " REPLY
+    case $REPLY in
+      [yY]) echo ; return 0 ;;
+      [nN]) echo ; return 1 ;;
+      *) printf "${red} %s \n${reset}" "invalid input"
+    esac 
+  done  
+}
+
 # Main:
 apt autoremove -y && apt --fix-broken install && apt update --fix-missing || error '\e[31mUnable to update, please check your internet connection...\e[0m' && apt upgrade -y && apt autoremove -y
 echo -en && sudo apt install -f
