@@ -2,7 +2,7 @@
 figlet Update All
 # Start Of The Script:
 echo -en '\n'
-echo -e "Small Script for Updating and Upgrading Packages on Linux \e[7m(ubuntu20.04 OS)\e[27m"
+echo -e "Small Script for Updating and Upgrading Packages on Linux \e[7m(Termux)\e[27m"
 echo 'Version 1.0'
 echo -en '\n'
 echo -en '\n'
