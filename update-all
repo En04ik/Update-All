@@ -14,7 +14,21 @@ function error {
 #Checking Update:
 echo -e "\e[31mChecking for updates...\e[0m"
 echo -e "\e[32mUpdates are found! \e[0m"
+echo -e "\n${yellow}Continue?\n\n${reset}"
+
+prompt_confirm() {
+  while true; do
+    read -r -n 1 -p "${1:-Press Y or N} [yes/no]: " REPLY
+    case $REPLY in
+      [yY]) echo ; return 0 ;;
+      [nN]) echo ; return 1 ;;
+      *) printf "${red} %s \n${reset}" "invalid input"
+    esac
+  done
+}
+
 # Prompt:
+prompt_confirm "Press Y or N" || exit 0
 echo "Please enter your password to start updating"
 echo -en '\n'
 # Main:
