@@ -14,23 +14,21 @@ function error {
 #Checking Update:
 echo -e "\e[31mChecking for updates...\e[0m"
 echo -e "\e[32mUpdates are found! \e[0m"
-
-start() {
-  echo -e "\n${yellow} If you want to continue, press Y \n\n${reset}"
-}
+echo -e "\n${yellow}Continue?\n\n${reset}"
 
 prompt_confirm() {
   while true; do
-    read -r -n 1 -p "${1:-} [y/n]: " REPLY
+    read -r -n 1 -p "${1:-Press Y or N} [yes/no]: " REPLY
     case $REPLY in
       [yY]) echo ; return 0 ;;
       [nN]) echo ; return 1 ;;
       *) printf "${red} %s \n${reset}" "invalid input"
-    esac 
-  done  
+    esac
+  done
 }
 
 # Main:
+prompt_confirm "Press Y or N" || exit 0
 apt autoremove -y && apt --fix-broken install && apt update --fix-missing || error '\e[31mUnable to update, please check your internet connection...\e[0m' && apt upgrade -y && apt autoremove -y
 echo -en && sudo apt install -f
 #Comment 'clear' below to stop clearing the output:
@@ -45,8 +43,7 @@ printf "\nQuitting from the script...\n"
 break
 else
 ((count=$count+1))
-printf "\nWrong key pressed for $count times\n"
+printf "\nWrong key pressed\n"
 echo "Press X to exit"
 fi
 done
-
