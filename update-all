@@ -32,7 +32,7 @@ printf "\nQuitting from the script...\n"
 break
 else
 ((count=$count+1))
-printf "\nWrong key pressed for $count times\n"
+printf "\nWrong key pressed\n"
 echo "Press X to exit"
 fi
 done
