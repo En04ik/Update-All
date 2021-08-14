@@ -29,7 +29,6 @@ prompt_confirm() {
 
 # Prompt:
 prompt_confirm "Press Y or N" || exit 0
-echo "Please enter your password to start updating"
 echo -en '\n'
 # Main:
 sudo apt autoremove -y && sudo apt --fix-broken install && sudo apt update --fix-missing || error '\e[31mUnable to update, please check your internet connection...\e[0m' && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt full-upgrade -y && sudo apt autoremove -y
