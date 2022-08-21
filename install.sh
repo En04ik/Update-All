@@ -2,4 +2,4 @@
 
 cd $HOME/Update-All
 chmod +x 'update-all'
-cp update-all $PREFIX/bin || error "Failed to create menu button!"
+cp update-all $PREFIX/bin || error "Failed to create command!"
